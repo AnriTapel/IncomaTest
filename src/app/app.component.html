@@ -1,0 +1,41 @@
+<h1>Менеджер объявлений</h1>
+
+<form class="control-panel" [formGroup]="controlPanel">
+  <mat-form-field class="example-full-width">
+    <input matInput formControlName="filterInput" placeholder="Фильтр по названию">
+  </mat-form-field>
+
+  <div>
+    <mat-form-field class="example-full-width" style="margin-right: 10px;">
+      <input matInput type="number" formControlName="userIdInput" placeholder="Введите Id автора от 2 до 10">
+
+      <ng-container *ngIf="id.invalid && (id.dirty || id.touched)">
+        <span *ngIf="id.errors.max" class="error">Значение не должно быть больше 10</span>
+        <span *ngIf="id.errors.min" class="error">Значение не должно быть меньше 2</span>
+      </ng-container>
+
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="uploadNewPosts()" [disabled]="isUploadBtnDisabled()">
+      Догрузить
+    </button>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="switchDisplayMode()">
+    {{showAllPosts ? 'Только избранные' : 'Все объявления'}}
+  </button>
+
+</form>
+
+<div class="container">
+  <div *ngFor="let post of filteredPosts$ | async" class="post">
+    <img src="../assets//favourite.jpg" (click)="switchFavouriteValue(post.id)"
+      [style.opacity]="favourites.includes(post.id) ? 1 : .3"/>
+    <p>{{post.title}} - Объявление №{{post.id}}</p>
+    <p>{{post.body}}</p>
+    <p>Id автора: {{post.userId}}</p>
+  </div>
+</div>
+
+
+
+<router-outlet></router-outlet>

@@ -1,0 +1,55 @@
+h1 {
+  text-align: center;
+}
+
+.control-panel,
+.container {
+  width: 90%;
+  margin: 10px auto;
+}
+
+.control-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.control-panel .error {
+  font-size: 10px;
+  opacity: .5;
+}
+
+.control-panel > button {
+  width: 160px;
+}
+
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template: auto / 1fr 1fr 1fr 1fr;
+  grid-gap: 10px 10px;
+}
+
+.post {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.post img {
+  width: 24px;
+  height: 24px;
+}
+
+.post p:nth-child(2) {
+  margin: 30px 0;
+}
+/*# sourceMappingURL=app.component.css.map */
